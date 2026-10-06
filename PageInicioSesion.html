@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina Inicio Sesion Web Trebujena</title>
+
+    <style>
+        label{
+            display: inline-block;
+            width: 200px;
+        }
+
+        button{
+            width: 250px;
+            height: 20px;
+            margin-left: 15%;
+        }
+
+        table{
+            margin-left: 35%;
+        }
+
+        h2{
+            margin-top: 9%;
+            margin-left: 42%;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>INICIO DE SESION</h2>
+    <form method="POST" action="PageInicioSesionConn.php">
+        <table border="1" cellpadding="10" cellspacing="0">
+            <tr>
+                <td colspan="2">
+                    <label for="id">Inserta tu ID de usuario:</label>
+                    <input type="text" id="id" name="id" placeholder="ID" required>
+                </td>
+            </tr>
+            
+            <tr>
+                <td colspan="2">
+                    <label for="nombre">Inserta tu nombre:</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="NOMBRE">
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <label for="Primer apellido">Inserta el primer apellido:</label>
+                    <input type="text" name="Primer apellido" id="Primer_apellido" placeholder="Apellido">
+                </td>
+            </tr>
+
+            <tr>    
+                <td>
+                    <label for="Segundo apellido">Inserta el segundo apellido:</label>    
+                    <input type="text" name="Segundo apellido" id="Segundo_apellido" placeholder="Apellido">
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <label for="Email">Inserta tu email:</label>
+                    <input type="text" name="email" id="email" placeholder="Email" required>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <label for="telefono">Inserta tu numero de telefono:</label>
+                    <input type="text" name="telefono" id="telefono" placeholder="Número teléfono">
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <label for="País">Inserta tu país:</label>
+                    <input type="text" name="pais" id="pais" placeholder="País">
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <label for="Ciudad">Inserta tu ciudad:</label>
+                    <input type="text" name="ciudad" id="ciudad" placeholder="Ciudad">
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <label for="contrasena_cifrada">Inserta tu contraseña:</label>
+                    <input type="password" name="contrasena_cifrada" id="contrasena_cifrada" placeholder="Contraseña">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <button type="submit" id="boton">Registrarse</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+</html>
