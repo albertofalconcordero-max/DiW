@@ -39,7 +39,7 @@
 
     <table border="1" cellpadding="10" cellspacing="0">
 
-            <form method="POST" action="intentoInicioSesion.php">
+            <form method="POST" action="intentoInicioSesion.php" id="login">
                 
                 <tr>
                     <td colspan="2">
@@ -54,6 +54,9 @@
                         <input type="password" name="contrasena_cifrada" id="contrasena_cifrada" required>
                     </td>
                 </tr>
+
+                <input type="hidden" name="lat" id="lat">
+                <input type="hidden" name="lon" id="lon">
 
                 <?php if (!empty($_SESSION['mensaje'])) { ?>
 
@@ -73,4 +76,22 @@
         
     </table>
 </body>
+
+    <script>
+        document.getElementById('login').addEventListener('submit',function (e){
+            e.preventDefault();
+            const form = this;
+            navigator.geolocation.getCurrentPosition(
+                function(pos){
+                    document.getElementById('lat').value = pos.coords.latitude;
+                    document.getElementById('lon').value = pos.coords.longitude;
+                    form.submit();
+                },
+                function(){
+                    alert('Debes permitir la ubicacion para iniciar sesion');
+                }
+            )
+        })
+    </script>
+
 </html>
