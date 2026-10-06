@@ -45,8 +45,6 @@
                     $_SESSION['perfil']=$fila['perfil'];
                     mysqli_query($conexion,"UPDATE sesiones SET intentos = 0, usuario_bloqueado = 0 WHERE email = '$email'");
                     if (distancia($lat, $lon, $latPermitida, $lonPermitida) <= $radioMetros) {
-                        $_SESSION['autenticado']=true;
-                        $_SESSION['perfil']=$fila['perfil'];
                         
                         if ($fila['perfil']=="admin") {
                             header("Location: bienvenido_admin.php");
@@ -57,8 +55,7 @@
 
                         exit;
                     }else {
-                        $_SESSION['mensaje'] = "Fuera de zona. Recibido: $lat, $lon. Distancia: "
-                        . round(distancia($lat, $lon, $latPermitida, $lonPermitida)) . " m";
+                        $_SESSION['mensaje'] = "Acceso denegado: estas fuera de la zona permitida";
                     }
                    
                 }
