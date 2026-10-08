@@ -9,5 +9,8 @@
 </head>
 <body>
     <h1>Bienvenido, admin</h1>
+    <?php
+        echo "Bienvenido " .$_SESSION['nombre']. " / " .$_SESSION['email'];
+    ?>
 </body>
 </html>

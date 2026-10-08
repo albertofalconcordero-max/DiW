@@ -12,8 +12,9 @@
 
             $email=$_POST['email'];
             $contrasena_cifrada=$_POST['contrasena_cifrada'];
+            $nombre=$_POST['nombre'];
 
-            $sql=mysqli_query($conexion,"SELECT contrasena_cifrada, perfil, intentos, usuario_bloqueado,
+            $sql=mysqli_query($conexion,"SELECT contrasena_cifrada, perfil, intentos, usuario_bloqueado, nombre,
                 TIMESTAMPDIFF(SECOND, NOW(), fecha_bloqueo + INTERVAL 3 MINUTE) AS segundos_restantes FROM SESIONES where email = '$email'");
 
             function distancia($lat, $lon, $lat2, $lon2){
@@ -41,11 +42,12 @@
                     $_SESSION['mensaje'] = "Cuenta bloqueada. Intentalo de nuevo en " .ceil($fila['segundos_restantes']/60). " minutos(s)";
                 }
                 else if (password_verify($contrasena_cifrada,$fila['contrasena_cifrada'])) {
-                    $_SESSION['autenticado']=true;
-                    $_SESSION['perfil']=$fila['perfil'];
                     mysqli_query($conexion,"UPDATE sesiones SET intentos = 0, usuario_bloqueado = 0 WHERE email = '$email'");
                     if (distancia($lat, $lon, $latPermitida, $lonPermitida) <= $radioMetros) {
-                        
+                        $_SESSION['autenticado']=true;
+                        $_SESSION['perfil']=$fila['perfil'];
+                        $_SESSION['email']=$email;
+                        $_SESSION['nombre']=$fila['nombre'];
                         if ($fila['perfil']=="admin") {
                             header("Location: bienvenido_admin.php");
                         }
