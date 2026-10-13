@@ -25,9 +25,9 @@
                 return $radio_tierra * 2 * atan2(sqrt($a), sqrt(1-$a));
             }
 
-            $latPermitida = 36.866340;
-            $lonPermitida = -6.178433;
-            $radioMetros = 200;
+            $latPermitida = 36.926996;
+            $lonPermitida = -6.069478;
+            $radioMetros = 71; //Metros a los que te puedes logear
 
             $lat = filter_input(INPUT_POST, 'lat', FILTER_VALIDATE_FLOAT);
             $lon = filter_input(INPUT_POST, 'lon', FILTER_VALIDATE_FLOAT);
@@ -58,6 +58,7 @@
                         exit;
                     }else {
                         $_SESSION['mensaje'] = "Acceso denegado: estas fuera de la zona permitida";
+                        $_SESSION['mensaje'] = "Acceso denegado: Distancia entre tu y la zona permitida " .round(distancia($lat, $lon, $latPermitida, $lonPermitida)) ."m"; 
                     }
                    
                 }
